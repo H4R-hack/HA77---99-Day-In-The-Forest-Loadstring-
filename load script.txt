@@ -1,0 +1,6 @@
+local Games = {
+  [79546208627805] = "https://raw.githubusercontent.com/H4R-hack/H4R-0--0-1.1.1-BETA-/main/hack%2099%20day%20in%20the%20forest.txt", -- 99 Nights in the Forest
+  [126509999114328] = "https://raw.githubusercontent.com/H4R-hack/HA77---99-Day-In-The-Forest-1/refs/heads/main/Hack%2099%20day%20in%20the%20forest%201.txt", -- 99 Nights in the Forest 1
+ }
+
+return Games
