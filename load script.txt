@@ -1,7 +1,56 @@
 local Games = {
-  [79546208627805] = "", -- 99 Nights in the Forest
-  [126509999114328] = "https://raw.githubusercontent.com/H4R-hack/HA77---99-Day-In-The-Forest-1/refs/heads/main/Hack%2099%20day%20in%20the%20forest%201.txt", -- 99 Nights in the Forest 1
- }
+    [79546208627805] = "https://raw.githubusercontent.com/H4R-hack/H4R-1.1.1.1-game-1-/refs/heads/main/hack%2099%20day%20in%20the%20forest.txt", --
+    [126509999114328] = "https://raw.githubusercontent.com/H4R-hack/HA77---99-Day-In-The-Forest-1/refs/heads/main/Hack%2099%20day%20in%20the%20forest%201.txt",   -- 
+}
+
+local currentId = game.PlaceId
+
+if Games[currentId] then
+    local success, err = pcall(function()
+        loadstring(game:HttpGet(Games[currentId]))()
+    end)
+
+    if not success then
+        warn("Script lỗi:", err)
+    end
+else
+    local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
+    ScreenGui.Name = "H4R_ErrorGui"
+    ScreenGui.ResetOnSpawn = false
+
+    local Frame = Instance.new("Frame", ScreenGui)
+    Frame.Size = UDim2.new(0, 400, 0, 150)
+    Frame.Position = UDim2.new(0.5, -200, 0.5, -75)
+    Frame.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    Frame.BorderSizePixel = 0
+    Frame.BackgroundTransparency = 0.1
+
+    local TextLabel = Instance.new("TextLabel", Frame)
+    TextLabel.Size = UDim2.new(1, 0, 0, 80)
+    TextLabel.Position = UDim2.new(0, 0, 0, 0)
+    TextLabel.BackgroundTransparency = 1
+    TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel.TextStrokeTransparency = 0
+    TextLabel.Text = "❌ Game này không phù hợp với script!"
+    TextLabel.Font = Enum.Font.SourceSansBold
+    TextLabel.TextSize = 22
+
+    local Button = Instance.new("TextButton", Frame)
+    Button.Size = UDim2.new(0.6, 0, 0, 40)
+    Button.Position = UDim2.new(0.2, 0, 1, -50)
+    Button.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+    Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Button.Font = Enum.Font.SourceSansBold
+    Button.TextSize = 20
+    Button.Text = "➤ Tiếp tục chơi game"
+
+    Button.MouseButton1Click:Connect(function()
+        ScreenGui:Destroy()
+    end)
+
+    warn("❌ Không có script cho Game vui lòng liên hệ nhà phát triển script H4R :", currentId)
+end
+
+return Games -- 
 
 
-return Games
